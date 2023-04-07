@@ -1,13 +1,19 @@
+import { useContext } from 'react'
 import { Header } from '../../components/Header'
-import { Summary } from '../../components/Summary/intex'
-import { SearchForm } from './SearchForm'
+import { Summary } from '../../components/Summary'
+import { SearchForm } from './components/SearchForm'
+
 import {
   PriceHighLight,
   TransactionContainer,
   TransactionTable,
 } from './styles'
+import { TransactionContext } from '../../contexts/TransactionsContext'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
+// AVISO no react dentro do react nao deixa e nao e recomendado transforma a função no useEffect em uma função async pois ele nao aceita e a solução e criar uma função dentro do useEffect para se tornar async
 export function Transactions() {
+  const { transactions } = useContext(TransactionContext)
   return (
     <div>
       <Header />
@@ -16,22 +22,23 @@ export function Transactions() {
         <SearchForm />
         <TransactionTable>
           <tbody>
-            <tr>
-              <td width="50%">Desenvolvimento de site</td>
-              <td>
-                <PriceHighLight variant="income">R$ 12.000,00</PriceHighLight>
-              </td>
-              <td>Venda</td>
-              <td>13/04/2022</td>
-            </tr>
-            <tr>
-              <td width="50%">Hambúrguer</td>
-              <td>
-                <PriceHighLight variant="outcome">R$ - 59,00</PriceHighLight>
-              </td>
-              <td>Alimentação</td>
-              <td>10/04/2022</td>
-            </tr>
+            {transactions.map((transaction) => {
+              return (
+                <tr key={transaction.id}>
+                  <td width="50%">{transaction.description}</td>
+                  <td>
+                    <PriceHighLight variant={transaction.type}>
+                      {transaction.type === 'outcome' && '- '}
+                      {priceFormatter.format(transaction.price)}
+                    </PriceHighLight>
+                  </td>
+                  <td>{transaction.category}</td>
+                  <td>
+                    {dateFormatter.format(new Date(transaction.createdAt))}
+                  </td>
+                </tr>
+              )
+            })}
           </tbody>
         </TransactionTable>
       </TransactionContainer>

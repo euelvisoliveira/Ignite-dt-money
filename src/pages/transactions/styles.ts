@@ -29,7 +29,7 @@ export const TransactionTable = styled.table`
   }
 `
 
-interface PriceHighLightProps {
+export interface PriceHighLightProps {
   variant: 'income' | 'outcome'
 }
 

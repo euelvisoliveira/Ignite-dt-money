@@ -1,0 +1,52 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createdAt": "2023-04-06T01:24:04.779Z"
+    },
+    {
+      "id": 2,
+      "description": "Hambúrguer",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 30,
+      "createdAt": "2023-04-06T01:15:04.779Z"
+    },
+    {
+      "description": "Casa",
+      "price": 10000,
+      "category": "imóvel",
+      "type": "income",
+      "createdAt": "2023-04-06T20:15:30.467Z",
+      "id": 3
+    },
+    {
+      "description": "computador",
+      "price": 5000,
+      "category": "tecnologia",
+      "type": "outcome",
+      "createdAt": "2023-04-06T21:11:09.821Z",
+      "id": 4
+    },
+    {
+      "description": "celular",
+      "price": 1000,
+      "category": "tecnologia",
+      "type": "outcome",
+      "createdAt": "2023-04-06T21:15:05.764Z",
+      "id": 5
+    },
+    {
+      "description": "Iogurte de Banana",
+      "price": 5,
+      "category": "Alimentacao",
+      "type": "outcome",
+      "createdAt": "2023-04-06T22:15:19.369Z",
+      "id": 6
+    }
+  ]
+}
