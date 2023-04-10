@@ -12,8 +12,8 @@ import {
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, useForm } from 'react-hook-form'
-import { useContext } from 'react'
-import { TransactionContext } from '../../contexts/TransactionsContext'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
+import { useContextSelector } from 'use-context-selector'
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -26,7 +26,12 @@ type NewTransactionsFormInput = z.infer<typeof newTransactionFormSchema>
 
 // sempre que precisarmos incluir uma informação no formulário essa informação nao vem de um input ou de qualquer elemento nativo do html vamos usar o formato de control
 export function NewTransactionModal() {
-  const { createTransaction } = useContext(TransactionContext)
+  const createTransactions = useContextSelector(
+    TransactionsContext,
+    (context) => {
+      return context.createTransaction
+    },
+  )
 
   const {
     control,
@@ -41,7 +46,7 @@ export function NewTransactionModal() {
   async function handleCreateNewTransaction(data: NewTransactionsFormInput) {
     const { description, price, category, type } = data
 
-    await createTransaction({
+    await createTransactions({
       description,
       price,
       category,

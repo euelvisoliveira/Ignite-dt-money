@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { Header } from '../../components/Header'
 import { Summary } from '../../components/Summary'
 import { SearchForm } from './components/SearchForm'
@@ -8,12 +7,16 @@ import {
   TransactionContainer,
   TransactionTable,
 } from './styles'
-import { TransactionContext } from '../../contexts/TransactionsContext'
+
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { dateFormatter, priceFormatter } from '../../utils/formatter'
+import { useContextSelector } from 'use-context-selector'
 
 // AVISO no react dentro do react nao deixa e nao e recomendado transforma a função no useEffect em uma função async pois ele nao aceita e a solução e criar uma função dentro do useEffect para se tornar async
 export function Transactions() {
-  const { transactions } = useContext(TransactionContext)
+  const transactions = useContextSelector(TransactionsContext, (context) => {
+    return context.transactions
+  })
   return (
     <div>
       <Header />

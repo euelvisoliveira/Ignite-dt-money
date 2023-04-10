@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyled = createGlobalStyle `
+export const GlobalStyled = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
@@ -9,12 +9,12 @@ export const GlobalStyled = createGlobalStyle `
   
   :focus {
     outline: none;
-    box-shadow: 0 0 0 2px ${props => props.theme['green-500']};
+    box-shadow: 0 0 0 2px ${(props) => props.theme['green-500']};
   }
 
   body {
-    background-color:${props => props.theme['gray-800']};
-    color: ${props => props.theme['gray-100']};
+    background-color:${(props) => props.theme['gray-800']};
+    color: ${(props) => props.theme['gray-100']};
     -webkit-font-smoothing: antialiased;
   }
 

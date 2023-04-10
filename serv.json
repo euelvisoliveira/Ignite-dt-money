@@ -43,10 +43,18 @@
     {
       "description": "Iogurte de Banana",
       "price": 5,
-      "category": "Alimentacao",
+      "category": "Alimentação",
       "type": "outcome",
       "createdAt": "2023-04-06T22:15:19.369Z",
       "id": 6
+    },
+    {
+      "description": "ps5",
+      "price": 4300,
+      "category": "Games",
+      "type": "outcome",
+      "createdAt": "2023-04-07T15:36:09.967Z",
+      "id": 7
     }
   ]
 }
